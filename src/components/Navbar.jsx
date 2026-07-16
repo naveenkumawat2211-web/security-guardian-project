@@ -100,7 +100,7 @@ export default function Navbar() {
   const [drop, setDrop] = useState(null);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
+   <header className="sticky top-0 z-[9999] bg-white shadow-md">
 
       {/* Top Bar */}
 
@@ -216,11 +216,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
 
-      <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ${mobile ? "max-h-[420px]" : "max-h-0"
-          }`} >
-        <div className="bg-white shadow-lg px-4 py-3 space-y-2 overflow-y-auto max-h-[420px]">
+      {/* Mobile Menu */}
 
+      <div
+        className={`lg:hidden fixed top-16 left-0 w-full bg-white shadow-lg z-[9998] overflow-y-auto transition-all duration-300 ${mobile ? "max-h-[calc(100vh-64px)] opacity-100" : "max-h-0 opacity-0"
+          }`}
+      >
+        <div className="px-4 py-3 space-y-2">
           <MobileLink
             title="Home"
             path="/"
