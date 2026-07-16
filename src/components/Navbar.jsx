@@ -120,7 +120,7 @@ export default function Navbar() {
 
       {/* Main Navbar */}
 
-      <div className="max-w-7xl mx-auto px-5 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 h-16 lg:h-24 flex justify-between items-center">
 
         {/* Logo */}
 
@@ -132,10 +132,10 @@ export default function Navbar() {
           <img
             src={Logo}
             alt="Logo"
-            className="w-24 py-3 hover:scale-105 transition"
+            className="w-16 sm:w-20 lg:w-24 hover:scale-105 transition"
           />
 
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <h2 className="font-bold text-xl">
               Security Guardian
             </h2>
@@ -217,11 +217,9 @@ export default function Navbar() {
       {/* Mobile Menu */}
 
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-500 ${mobile ? "max-h-[700px]" : "max-h-0"
-          }`}
-      >
-
-        <div className="bg-white shadow-lg p-5 space-y-4">
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${mobile ? "max-h-[420px]" : "max-h-0"
+          }`} >
+        <div className="bg-white shadow-lg px-4 py-3 space-y-2 overflow-y-auto max-h-[420px]">
 
           <MobileLink
             title="Home"
@@ -237,7 +235,7 @@ export default function Navbar() {
                 onClick={() =>
                   setDrop(drop === menu.title ? null : menu.title)
                 }
-                className="flex justify-between items-center w-full font-semibold"
+                className="flex justify-between items-center w-full py-2 text-sm font-semibold"
               >
 
                 {menu.title}
@@ -259,7 +257,7 @@ export default function Navbar() {
                     key={item.name}
                     to={item.path}
                     onClick={() => setMobile(false)}
-                    className="block pl-5 py-2 hover:text-sky-600"
+                    className="block pl-5 py-1.5 text-sm hover:text-sky-600"
                   >
                     {item.name}
                   </Link>
@@ -287,7 +285,7 @@ export default function Navbar() {
             setMobile={setMobile}
           />
 
-          
+
 
         </div>
 
@@ -304,7 +302,7 @@ function MenuLink({ title, path }) {
     <NavLink
       to={path}
       className={({ isActive }) =>
-        `px-4 py-2 font-semibold transition relative ${isActive
+        `block py-1.5 text-sm font-semibold ${isActive
           ? "text-sky-600"
           : "text-gray-700 hover:text-sky-600"
         }`
