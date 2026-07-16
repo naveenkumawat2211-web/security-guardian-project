@@ -1,4 +1,5 @@
-import React, { useState } from "react"; import contactImg from "../assets/sliderImages/contact.png";
+import React, { useState } from "react"; 
+import contactImg from "../assets/sliderImages/contact.png";
 import {
   FaPhoneAlt,
   FaEnvelope,
