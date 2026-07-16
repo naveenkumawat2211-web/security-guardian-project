@@ -12,7 +12,7 @@ import Clients from "./components/Clients";
 import Industries from "./components/Industries";
 import Quote from "./components/Quote";
 import Locations from "./components/Locations";
-import Faq from "./components/Faqs";
+import Faqs from "./components/Faqs";
 import DigitalSlider from "./components/DigitalSlider";
 
 import Careers from "./Pages/Careers";
@@ -36,7 +36,7 @@ import Factory from "./Pages/industries/Factory";
 import NewYork from "./Pages/locations/NewYork";
 import Albany from "./Pages/locations/Albany";
 import Bronx from "./Pages/locations/Bronx";
-import Kings from "./Pages/locations/KIngs";
+import Kings from "./Pages/locations/Kings";
 import Queens from "./Pages/locations/Queens";
 import Richmond from "./Pages/locations/Richmond";
 import Westchester from "./Pages/locations/Westchester";
@@ -59,7 +59,7 @@ function Home() {
       <Industries />
       <Quote />
       <Locations />
-      <Faq />
+      <Faqs />
       <DigitalSlider />
     </>
   );

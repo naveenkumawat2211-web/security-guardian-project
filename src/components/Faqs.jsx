@@ -48,7 +48,7 @@ const questions = [
   },
 ];
 
-export default function Faq() {
+export default function Faqs() {
   const [open, setOpen] = useState(0);
 
   useEffect(() => {
