@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+
 import {
   FaAlignJustify,
   FaChevronDown,
@@ -96,9 +97,27 @@ const menus = [
   },
 ];
 
+
 export default function Navbar() {
   const [mobile, setMobile] = useState(false);
   const [drop, setDrop] = useState(null);
+
+  useEffect(() => {
+    if (mobile) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [mobile]);
+
+
 
   return (
     <header className="sticky top-0 z-[9999] bg-white shadow-md">
