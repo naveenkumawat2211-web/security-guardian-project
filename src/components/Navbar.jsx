@@ -104,115 +104,121 @@ export default function Navbar() {
     <header className="sticky top-0 z-[9999] bg-white shadow-md">
 
       {/* Top Bar */}
+      <div className="hidden lg:flex items-center justify-between bg-sky-700 text-white px-10 py-2 text-sm">
+        <div className="flex items-center gap-8">
+          <span className="flex items-center gap-2 hover:text-sky-200 transition">
+            <FaPhoneAlt className="text-xs" />
+            +91 7597386XXX
+          </span>
 
-      <div className="hidden lg:flex justify-end gap-8 bg-sky-600 text-white px-10 py-2 text-sm">
+          <span className="flex items-center gap-2 hover:text-sky-200 transition">
+            <FaEnvelope className="text-xs" />
+            info@securityguardian.com
+          </span>
+        </div>
 
-        <span className="flex items-center gap-2">
-          <FaPhoneAlt />
-          +91 7597386XXX
+        <span className="text-sky-100">
+          Trusted Security Services 24/7
         </span>
-
-        <span className="flex items-center gap-2">
-          <FaEnvelope />
-          info@securityguardian.com
-        </span>
-
       </div>
 
       {/* Main Navbar */}
+      <div className="bg-white/95 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
 
-      <div className="max-w-7xl mx-auto px-4 h-16 lg:h-24 flex justify-between items-center">
-
-        {/* Logo */}
-
-        <Link
-          to="/"
-          className="flex items-center gap-3"
-          onClick={() => setMobile(false)}
-        >
-          <img
-            src={Logo}
-            alt="Logo"
-            className="w-16 sm:w-20 lg:w-24 hover:scale-105 transition"
-          />
-
-          <div className="hidden lg:block">
-            <h2 className="font-bold text-xl">
-              Security Guardian
-            </h2>
-
-            <p className="text-xs text-gray-500">
-              Trusted Protection Service
-            </p>
-          </div>
-        </Link>
-
-        {/* Desktop Menu */}
-
-        <nav className="hidden lg:flex items-center">
-
-          <MenuLink title="Home" path="/" />
-
-          {menus.map((menu) => (
-            <div key={menu.title} className="relative group">
-
-              <button className="flex items-center gap-2 px-5 py-7 font-semibold hover:text-sky-600 transition">
-
-                {menu.title}
-
-                <FaChevronDown className="text-xs group-hover:rotate-180 transition" />
-
-              </button>
-
-              <div className="absolute left-0 top-full w-56 bg-white rounded-xl shadow-xl border invisible opacity-0 translate-y-3 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-
-                {menu.items.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    className="block px-5 py-3 hover:bg-sky-600 hover:text-white"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-
-              </div>
-
-            </div>
-          ))}
-
-          <MenuLink title="Careers" path="/careers" />
-          <MenuLink title="About" path="/about" />
-
-          <MenuLink title="Contact" path="/contact" />
-
-
-
-        </nav>
-
-        {/* Quote Button */}
-
-        <div className="flex items-center gap-5">
-
+          {/* Logo */}
           <Link
-            to="/contact"
-            className="hidden lg:flex items-center gap-2 bg-sky-600 text-white px-6 py-3 rounded-full hover:bg-sky-700 transition"
+            to="/"
+            onClick={() => setMobile(false)}
+            className="flex items-center gap-3"
           >
-            <FaShieldAlt />
-            Get Quote
+            <img
+              src={Logo}
+              alt="Logo"
+              className="w-14 sm:w-16 lg:w-20 transition-transform duration-300 hover:scale-105"
+            />
+
+            <div className="hidden lg:block">
+              <h2 className="text-xl font-bold text-slate-800">
+                Security Guardian
+              </h2>
+
+              <p className="text-xs text-slate-500 tracking-wide">
+                Trusted Protection Service
+              </p>
+            </div>
           </Link>
 
-          {/* Mobile Icon */}
+          {/* Desktop Menu */}
+          <nav className="hidden lg:flex items-center   gap-2">
+            <div className="flex items-center gap-2 rounded-lg px-2 py-2 font-semibold text-slate-700 transition-all duration-300 hover:bg-sky-50 hover:text-sky-600"> <MenuLink title="Home" path="/" /></div>
 
-          <button
-            onClick={() => setMobile(!mobile)}
-            className="lg:hidden text-2xl"
-          >
-            {mobile ? <FaTimes /> : <FaAlignJustify />}
-          </button>
+
+            {menus.map((menu) => (
+              <div key={menu.title} className="relative group">
+
+                <button className="flex items-center gap-2 rounded-lg px-4 py-3 font-semibold text-slate-700 transition-all duration-300 hover:bg-sky-50 hover:text-sky-600">
+
+                  {menu.title}
+
+                  <FaChevronDown className="text-[10px] transition-transform duration-300 group-hover:rotate-180" />
+                </button>
+
+                <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-gray-100 bg-white shadow-2xl opacity-0 invisible translate-y-3 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 overflow-hidden">
+
+                  {menu.items.map((item) => (
+                    <NavLink
+                      key={item.name}
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `flex items-center justify-between px-5 py-3 text-sm transition-all ${isActive
+                          ? "bg-sky-600 text-white"
+                          : "text-slate-700 hover:bg-sky-50 hover:text-sky-600"
+                        }`
+                      }
+                    >
+                      <span>{item.name}</span>
+
+                      <FaChevronRight className="text-[11px]" />
+                    </NavLink>
+                  ))}
+
+                </div>
+
+              </div>
+            ))}
+
+
+            <MenuLink title="Careers" path="/careers" />
+            <MenuLink title="About" path="/about" />
+            <MenuLink title="Contact" path="/contact" />
+
+
+
+          </nav>
+
+          {/* Right Side */}
+          <div className="flex items-center gap-4">
+
+            <Link
+              to="/contact"
+              className="hidden lg:flex items-center gap-2 rounded-full bg-sky-600 px-6 py-3 text-white font-medium shadow-lg shadow-sky-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-sky-700"
+            >
+              <FaShieldAlt />
+              Get Quote
+            </Link>
+
+            {/* Mobile Toggle */}
+            <button
+              onClick={() => setMobile(!mobile)}
+              className="lg:hidden flex h-11 w-11 items-center justify-center rounded-xl border border-gray-200 bg-white shadow-sm transition hover:bg-sky-50 hover:text-sky-600"
+            >
+              {mobile ? <FaTimes size={20} /> : <FaAlignJustify size={20} />}
+            </button>
+
+          </div>
 
         </div>
-
       </div>
 
       {/* Mobile Menu */}
@@ -251,7 +257,9 @@ export default function Navbar() {
               </button>
 
               <div
-                className={`overflow-hidden transition-all ${drop === menu.title ? "max-h-60 mt-2" : "max-h-0"
+                className={`transition-all duration-300 ${drop === menu.title
+                  ? "mobile-dropdown-scroll max-h-56 overflow-y-auto mt-2 pr-1"
+                  : "max-h-0 overflow-hidden"
                   }`}
               >
 
@@ -263,22 +271,13 @@ export default function Navbar() {
                     className={({ isActive }) =>
                       `group flex items-center justify-between mt-2 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200 ${isActive
                         ? "bg-sky-600 text-white border-sky-600 shadow-md"
-                        : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-sky-50 hover:border-sky-300 hover:text-sky-600"
+                        : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-sky-50 hover:border-sky-300 hover:text-sky-600 active:scale-[0.98]"
                       }`
                     }
                   >
-                    {({ isActive }) => (
-                      <>
-                        <span>{item.name}</span>
+                    <span>{item.name}</span>
 
-                        <FaChevronRight
-                          className={`text-xs text-gray-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all ${isActive
-                              ? "text-white"
-                              : "text-gray-400 group-hover:text-sky-600 group-hover:translate-x-1"
-                            }`}
-                        />
-                      </>
-                    )}
+                    <FaChevronRight className="text-xs text-gray-400 transition-all group-hover:text-sky-600 group-hover:translate-x-1" />
                   </NavLink>
                 ))}
               </div>
@@ -321,9 +320,9 @@ function MenuLink({ title, path }) {
     <NavLink
       to={path}
       className={({ isActive }) =>
-        `block py-1.5 text-sm font-semibold ${isActive
-          ? "text-sky-600"
-          : "text-gray-700 hover:text-sky-600"
+        `rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 ${isActive
+          ? "bg-sky-100 text-sky-600"
+          : "text-slate-700 hover:bg-sky-50 hover:text-sky-600"
         }`
       }
     >
