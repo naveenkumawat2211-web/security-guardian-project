@@ -7,6 +7,7 @@ import {
   FaPhoneAlt,
   FaTimes,
   FaShieldAlt,
+  FaChevronRight,
 } from "react-icons/fa";
 
 import Logo from "../assets/logos/logo2.png";
@@ -100,7 +101,7 @@ export default function Navbar() {
   const [drop, setDrop] = useState(null);
 
   return (
-   <header className="sticky top-0 z-[9999] bg-white shadow-md">
+    <header className="sticky top-0 z-[9999] bg-white shadow-md">
 
       {/* Top Bar */}
 
@@ -255,14 +256,30 @@ export default function Navbar() {
               >
 
                 {menu.items.map((item) => (
-                  <Link
+                  <NavLink
                     key={item.name}
                     to={item.path}
                     onClick={() => setMobile(false)}
-                    className="block pl-5 py-1.5 text-sm hover:text-sky-600"
+                    className={({ isActive }) =>
+                      `group flex items-center justify-between mt-2 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200 ${isActive
+                        ? "bg-sky-600 text-white border-sky-600 shadow-md"
+                        : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-sky-50 hover:border-sky-300 hover:text-sky-600"
+                      }`
+                    }
                   >
-                    {item.name}
-                  </Link>
+                    {({ isActive }) => (
+                      <>
+                        <span>{item.name}</span>
+
+                        <FaChevronRight
+                          className={`text-xs text-gray-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all ${isActive
+                              ? "text-white"
+                              : "text-gray-400 group-hover:text-sky-600 group-hover:translate-x-1"
+                            }`}
+                        />
+                      </>
+                    )}
+                  </NavLink>
                 ))}
               </div>
 
@@ -323,9 +340,9 @@ function MobileLink({ title, path, setMobile }) {
       to={path}
       onClick={() => setMobile(false)}
       className={({ isActive }) =>
-        `block py-2 font-semibold ${isActive
-          ? "text-sky-600"
-          : "text-gray-700 hover:text-sky-600"
+        `block rounded-lg px-3 py-2 font-semibold transition-all duration-200 ${isActive
+          ? "bg-sky-100 text-sky-600"
+          : "text-gray-700 hover:bg-sky-50 hover:text-sky-600"
         }`
       }
     >
